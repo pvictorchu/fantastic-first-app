@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
   {
     path: 'nova-senha',
     loadChildren: () => import('./nova-senha/nova-senha.module').then( m => m.NovaSenhaPageModule)
-  },  {
+  },
+  {
     path: 'feed',
     loadChildren: () => import('./feed/feed.module').then( m => m.FeedPageModule)
   },
@@ -22,7 +24,14 @@ const routes: Routes = [
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
-
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+  },
+  {
+    path: 'visualizacaoChat',
+    loadChildren: () => import('./visualizacaoChat/visualizacaoChat.module').then( m => m.VisualizacaoChatPageModule)
+  }
   
 ];
 
