@@ -1,0 +1,7 @@
+{
+  "name": "LocalPromo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
