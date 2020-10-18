@@ -16,9 +16,21 @@ const routes: Routes = [
     loadChildren: () => import('./nova-senha/nova-senha.module').then( m => m.NovaSenhaPageModule)
   },
   {
+    path: 'feed',
+    loadChildren: () => import('./feed/feed.module').then( m => m.FeedPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
     path: 'cadastro',
     loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
   },
+  
+];
+
+
   
 ];
 
