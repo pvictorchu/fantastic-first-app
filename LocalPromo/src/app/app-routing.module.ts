@@ -27,7 +27,15 @@ const routes: Routes = [
   {
     path: 'cadastro',
     loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
-  }, 
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+  },
+  {
+    path: 'visualizacaoChat',
+    loadChildren: () => import('./visualizacaoChat/visualizacaoChat.module').then( m => m.VisualizacaoChatPageModule)
+  } 
 ];
 @NgModule({
   imports: [
