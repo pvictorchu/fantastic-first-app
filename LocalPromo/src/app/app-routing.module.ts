@@ -25,16 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
   {
-    path: 'chat',
-    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
-  },
-  {
-    path: 'visualizacaoChat',
-    loadChildren: () => import('./visualizacaoChat/visualizacaoChat.module').then( m => m.VisualizacaoChatPageModule)
-  }
-  
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  }, 
 ];
-
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

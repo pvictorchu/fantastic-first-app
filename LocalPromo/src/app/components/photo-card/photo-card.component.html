@@ -1,0 +1,54 @@
+<ion-card>
+  <img [src]="photo.photo_url" alt="">
+  <ion-card-content>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="auto">
+        <ion-avatar class="feed-avatar">
+          <img [src]="photo.user.photo_url" alt="">
+        </ion-avatar>
+      </ion-col>
+      <ion-col>
+        <ion-card-title>{{photo.user.name}}</ion-card-title>
+        <ion-card-subtitle>{{photo.place}}</ion-card-subtitle>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-margin-bottom">
+      <ion-col size="auto" class="ion-no-padding">
+        <ion-button fill="clear" color="danger" (click)="photo.liked = !photo.liked">
+          <ion-icon [class.novo-like]="photo.liked" slot="icon-only" [name]="photo.liked ? 'heart' : 'heart-outline'">
+          </ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="auto" class="ion-no-padding">
+        <ion-button fill="clear">
+          <ion-icon slot="icon-only" name="chatbubble-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="auto" class="ion-no-padding" style="margin-left: auto">
+        <ion-button fill="clear">
+          <ion-icon slot="icon-only" name="bookmark-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      {{photo.description}}
+    </ion-row>
+    <ion-row *ngFor="let i of photo.comment">
+      <ion-col>
+        <ion-avatar class="feed-comment-avatar">
+          <img [src]="i.photo_url" alt="">
+        </ion-avatar>
+      </ion-col>
+      <ion-col>
+        {{i.autor}}
+      </ion-col>
+      <ion-col>
+        {{i.message}}
+      </ion-col>
+    </ion-row>
+    <br>
+    <small>
+      Ver todos os {{photo.comment.length}} comentários
+    </small>
+  </ion-card-content>
+</ion-card>

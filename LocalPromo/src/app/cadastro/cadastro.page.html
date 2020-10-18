@@ -1,0 +1,32 @@
+
+<ion-header>
+  <ion-toolbar>    
+    <ion-buttons slot="start">
+    <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+    <ion-item>
+        <ion-label position="floating">Nome Completo</ion-label>
+        <ion-input [(ngModel)]="usuario2.nomeCompleto" name="fName"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [(ngModel)]="usuario2.name" name="lName"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="usuario2.senha" name="password"></ion-input>
+    </ion-item>
+  
+    <ion-button type="submit" expand="full" color="primary" (click)="retorno()" routerLink = "/feed" >Registrar</ion-button>
+
+
+</ion-content>  

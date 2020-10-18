@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>feed</ion-title>
+    <ion-title slot="start">Local Promo</ion-title>
+    <ion-avatar class="avatar" slot="end">
+      <img 
+        class="perfil-icon"
+      src="https://img.elo7.com.br/product/zoom/2415D56/logo-doceria-confeitaria-bolo.jpg"
+      >
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <app-photo-card *ngFor="let p of photos" [photo]="p"></app-photo-card>
 </ion-content>
