@@ -5,11 +5,19 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './cadastro.page.html',
   styleUrls: ['./cadastro.page.scss'],
 })
-export class CadastroPage implements OnInit {
+export class CadastroPage  {
+  public usuario2 = {name:"",
+                    senha:"", 
+                    nomeCompleto :""
+                   };
 
-  constructor() { }
 
-  ngOnInit() {
-  }
+  constructor() {}
+    
+  public retorno(){
+      console.log(this.usuario2);
+
+    }
+  
 
 }
