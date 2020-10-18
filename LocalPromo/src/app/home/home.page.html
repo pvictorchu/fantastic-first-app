@@ -6,13 +6,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">LocalPromo</ion-title>
     </ion-toolbar>
   </ion-header>
-
+<ion-content>
 
   <ion-content padding>
     <form #form="ngForm" (ngSubmit)="login(form)" method="post">
@@ -25,14 +24,12 @@
         <ion-label position="floating">Password</ion-label>
         <ion-input ngModel type="password" name="password"></ion-input>
       </ion-item>
-    
-      <p text-right>Esqueceu a senha ?</p>
-    
-      <ion-button type="submit" expand="full" color="primary" routerLink = "feed" >Login</ion-button>
+      <ion-button type="submit" expand="full" color="primary" routerLink = "/feed" >Login</ion-button>
     </form>
-  
+    <p text-right routerLink = "/nova-senha" >Esqueceu a senha ?</p>
+    <ion-button type="submit" expand="full" color="primary" routerLink = "/nova-senha" >Nova </ion-button>
     <p text-center>Não tem uma conta?</p>
-    <ion-button expand="full" color="primary" routerLink = "/nova-senha"> Registrar</ion-button>
+    <ion-button expand="full" color="primary" routerLink = "/cadastro"> Registrar</ion-button>
   </ion-content>
 
 
