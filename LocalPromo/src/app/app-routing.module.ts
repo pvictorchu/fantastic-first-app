@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'nova-senha',
     loadChildren: () => import('./nova-senha/nova-senha.module').then( m => m.NovaSenhaPageModule)
   },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  },
   
 ];
 
