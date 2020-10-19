@@ -1,9 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>perfil</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-router-outlet id="menu-content"></ion-router-outlet>
+
+  <ion-row class="ion-align-items-center">
+    <ion-col>
+      <ion-avatar class="profile-pic">
+        <img src="https://img.elo7.com.br/product/zoom/2415D56/logo-doceria-confeitaria-bolo.jpg" alt="">
+      </ion-avatar>
+    </ion-col>
+    <ion-col>
+      <h3>@SweetTreatConfeitaria</h3>
+    </ion-col>
+  </ion-row>
+
+  <p style="padding: 10px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+  <ion-segment [(ngModel)]="gridSize">
+    <ion-segment-button value="4">
+      <ion-icon name="grid"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="12">
+      <ion-icon name="square"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-row>
+    <ion-col [routerLink]="['view', p.id]" class="grid-cell" [size]="gridSize" *ngFor="let p of photos2">
+      <img [src]="p.photo_url" alt="">
+    </ion-col>
+  </ion-row>
 
 </ion-content>
