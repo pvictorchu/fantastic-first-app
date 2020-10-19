@@ -7,6 +7,16 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+
+  public usuario = {name:"",senha:""};
+  
+  
   constructor() {}
+    
+  public retornoNome(){
+      console.log(this.usuario);
+      this.usuario = null;
+    }
+  
 
 }
