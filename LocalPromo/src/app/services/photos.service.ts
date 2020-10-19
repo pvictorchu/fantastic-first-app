@@ -72,7 +72,7 @@ export class PhotosService {
     }
   }, {
     id: 92,
-    photo_url: 'https://ae01.alicdn.com/kf/HTB1zh0LOVXXXXXPapXXq6xXFXXXo/227411232/HTB1zh0LOVXXXXXPapXXq6xXFXXXo.jpg?size=155976&height=1077&width=800&hash=19076d13decde1676bde424b47802454',
+    photo_url: 'https://festas.site/wp-content/uploads/2018/10/bolo-itaipava-papel-arroz4.jpg',
     liked: true,
     description: 'Bolos para todos os gostos!!!',
     comment_count: 3990,
@@ -126,6 +126,26 @@ export class PhotosService {
       name: 'Doce Forma'
     }
   },
+  {
+    id: 1,
+    photo_url: 'https://scontent-yyz1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/c0.108.864.864a/s640x640/120263195_654820642078622_7129361058334552863_n.jpg?_nc_ht=scontent-yyz1-1.cdninstagram.com&_nc_cat=102&_nc_ohc=RfCYXxBY3bIAX9C4JUy&oh=565fcf899516ef36852692b0202bb16d&oe=5FA5F86F',
+    liked: true,
+    description: 'Faça a sua festa direto do bar!!!',
+    comment_count: 42,
+    comment: [{
+      id: 1,
+      autor: 'Carlinhos',
+      photo_url: 'https://randomuser.me/api/portraits/men/78.jpg',
+      message: 'Kkkkkkkk!!'
+    }],
+    place: 'Santos, SP',
+    user: {
+      id: 5,
+      photo_url: 'https://blog.agenciadosite.com.br/wp-content/uploads/2017/02/logo-doceforma-e1486903998967.jpg',
+      name: 'Doce Forma'
+    }
+  },
+
   ];
 
   constructor() { }
@@ -136,5 +156,103 @@ export class PhotosService {
 
   public findPhoto(id: number) {
     return this.photos.find(p => p.id === id);
+  }
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PhotosService2 {
+
+  private photos2: Photos[] = [{
+    id: 2,
+    photo_url: 'https://www.tuacasa.com.br/wp-content/uploads/2020/03/bolo-dourado-20-730x730.jpg',
+    liked: true,
+    description: 'Lindíssimo bolo dourado, apenas R$ 1.500,00!!!',
+    comment_count: 44,
+    comment: [{
+      id: 1,
+      photo_url: 'https://uifaces.co/our-content/donated/gPZwCbdS.jpg',
+      autor: 'Alfred',
+      message: 'Este bolo é deveras maravilhoso'
+    },
+    {
+      id: 2,
+      photo_url: 'https://img.elo7.com.br/product/zoom/1D89B49/bolo-dourado-bolo-para-aluguel.jpg',
+      autor: 'Bettina',
+      message: 'Depois dos meus cursos sempre tem um!!!'
+    }
+    ],
+    place: 'São Paulo, SP',
+    user: {
+      id: 50,
+      photo_url: 'https://img.elo7.com.br/product/zoom/2415D56/logo-doceria-confeitaria-bolo.jpg',
+      name: 'Sweet Treat Confeitaria'
+    }
+  }, {
+    id: 20,
+    photo_url: 'https://i.pinimg.com/originals/10/21/2b/10212b2aa5195b310a965d95e5674984.jpg',
+    liked: true,
+    description: 'Fazemos bolos decorados!!!',
+    comment_count: 30,
+    comment: [{
+      id: 1,
+      autor: 'Cleberson',
+      photo_url: 'https://randomuser.me/api/portraits/men/36.jpg',
+      message: 'Minha filha adorou!'
+    }],
+    place: 'São Paulo, SP',
+    user: {
+      id: 50,
+      photo_url: 'https://img.elo7.com.br/product/zoom/2415D56/logo-doceria-confeitaria-bolo.jpg',
+      name: 'Sweet Treat Confeitaria'
+    }
+  }, {
+    id: 92,
+    photo_url: 'https://img.elo7.com.br/product/original/270B6CD/bolo-cenografico-espatulado-branco-e-dourado-bolo.jpg',
+    liked: true,
+    description: 'Bolos para todos os gostos!!!',
+    comment_count: 3990,
+    comment: [{
+      id: 1,
+      autor: 'Amélia',
+      photo_url: 'https://images-na.ssl-images-amazon.com/images/M/MV5BNjk5NjE5NTczMV5BMl5BanBnXkFtZTcwODI0OTM0NA@@._V1_UY256_CR4,0,172,256_AL_.jpg',
+      message: 'Adoraria receber rsrsrs'
+    }],
+    place: 'São Paulo, SP',
+    user: {
+      id: 50,
+      photo_url: 'https://img.elo7.com.br/product/zoom/2415D56/logo-doceria-confeitaria-bolo.jpg',
+      name: 'Sweet Treat Confeitaria'
+    }
+  }, {
+    id: 92,
+    photo_url: 'https://i.pinimg.com/originals/73/de/86/73de86832150e5d49507bbc288a1126c.jpg',
+    liked: true,
+    description: 'Bolos para todos os gostos!!!',
+    comment_count: 3990,
+    comment: [{
+      id: 1,
+      autor: 'Amélia',
+      photo_url: 'https://images-na.ssl-images-amazon.com/images/M/MV5BNjk5NjE5NTczMV5BMl5BanBnXkFtZTcwODI0OTM0NA@@._V1_UY256_CR4,0,172,256_AL_.jpg',
+      message: 'Adoraria receber rsrsrs'
+    }],
+    place: 'São Paulo, SP',
+    user: {
+      id: 50,
+      photo_url: 'https://img.elo7.com.br/product/zoom/2415D56/logo-doceria-confeitaria-bolo.jpg',
+      name: 'Sweet Treat Confeitaria'
+    }
+  },
+  ];
+
+  constructor() { }
+
+  public allPhotos() {
+    return this.photos2;
+  }
+
+  public findPhoto(id: number) {
+    return this.photos2.find(p => p.id === id);
   }
 }
