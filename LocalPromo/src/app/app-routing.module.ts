@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 const routes: Routes = [
   {
@@ -27,13 +28,15 @@ const routes: Routes = [
     path: 'cadastro',
     loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
   },
-  
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+  },
+  {
+    path: 'visualizacaoChat',
+    loadChildren: () => import('./visualizacaoChat/visualizacaoChat.module').then( m => m.VisualizacaoChatPageModule)
+  } 
 ];
-
-
-  
-];
-
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

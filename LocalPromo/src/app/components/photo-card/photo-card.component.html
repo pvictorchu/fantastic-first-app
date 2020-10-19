@@ -1,9 +1,10 @@
 <ion-card>
-  <ion-card-header>
+  <img [src]="photo.photo_url" alt="">
+  <ion-card-content>
     <ion-row class="ion-align-items-center">
       <ion-col size="auto">
         <ion-avatar class="feed-avatar">
-          <img [src]="'https://randomuser.me/api/portraits/women/'+photo.user.id+'.jpg'" alt="">
+          <img [src]="photo.user.photo_url" alt="">
         </ion-avatar>
       </ion-col>
       <ion-col>
@@ -11,9 +12,6 @@
         <ion-card-subtitle>{{photo.place}}</ion-card-subtitle>
       </ion-col>
     </ion-row>
-  </ion-card-header>
-  <img [src]="'https://picsum.photos/id/'+(photo.id)+'/500'" alt="">
-  <ion-card-content>
     <ion-row class="ion-margin-bottom">
       <ion-col size="auto" class="ion-no-padding">
         <ion-button fill="clear" color="danger" (click)="photo.liked = !photo.liked">
@@ -26,20 +24,31 @@
           <ion-icon slot="icon-only" name="chatbubble-outline"></ion-icon>
         </ion-button>
       </ion-col>
-      <ion-col size="auto" class="ion-no-padding">
-        <ion-button fill="clear">
-          <ion-icon slot="icon-only" name="paper-plane-outline"></ion-icon>
-        </ion-button>
-      </ion-col>
       <ion-col size="auto" class="ion-no-padding" style="margin-left: auto">
         <ion-button fill="clear">
           <ion-icon slot="icon-only" name="bookmark-outline"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
-    {{photo.description}}<br>
+    <ion-row>
+      {{photo.description}}
+    </ion-row>
+    <ion-row *ngFor="let i of photo.comment">
+      <ion-col>
+        <ion-avatar class="feed-comment-avatar">
+          <img [src]="i.photo_url" alt="">
+        </ion-avatar>
+      </ion-col>
+      <ion-col>
+        {{i.autor}}
+      </ion-col>
+      <ion-col>
+        {{i.message}}
+      </ion-col>
+    </ion-row>
+    <br>
     <small>
-      Ver todos os {{photo.comment_count}} comentários
+      Ver todos os {{photo.comment.length}} comentários
     </small>
   </ion-card-content>
 </ion-card>

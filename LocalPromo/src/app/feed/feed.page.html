@@ -1,12 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title slot="start">Aplicativo Doido</ion-title>
-    <ion-avatar class="avatar" slot="end">
-      <img 
-        class="perfil-icon"
-      src="https://img.elo7.com.br/product/zoom/2415D56/logo-doceria-confeitaria-bolo.jpg"
-      >
-    </ion-avatar>
+    <ion-buttons slot="start" routerLink="/perfil">
+      <ion-avatar class="avatar" slot="icon-only">
+        <img class="perfil-icon" src="https://img.elo7.com.br/product/zoom/2415D56/logo-doceria-confeitaria-bolo.jpg">
+      </ion-avatar>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Local Promo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="paper-plane" routerLink = "/messages"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
