@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { VisualizacaoChatPageRoutingModule } from './visualizacaoChat-routing.module';
+import { VisualizacaoChatPageRoutingModule } from './visualizacao-chat-routing.module';
 
-import { VisualizacaoChatPage } from './visualizacaoChat.page';
+import { VisualizacaoChatPage } from './visualizacao-chat.page';
 
 @NgModule({
   imports: [

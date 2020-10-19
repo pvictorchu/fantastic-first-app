@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { VisualizacaoChatPage } from './visualizacaoChat.page';
+import { VisualizacaoChatPage } from './visualizacao-chat.page';
 
 const routes: Routes = [
   {
-    path: 'visualizacaoChat',
+    path: '',
     component: VisualizacaoChatPage
   }
 ];
