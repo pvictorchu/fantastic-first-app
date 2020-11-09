@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-visualizacaoChat',
-  templateUrl: './visualizacaoChat.page.html',
-  styleUrls: ['./visualizacaoChat.page.scss'],
+  selector: 'app-visualizacao-chat',
+  templateUrl: './visualizacao-chat.page.html',
+  styleUrls: ['./visualizacao-chat.page.scss'],
 })
 export class VisualizacaoChatPage implements OnInit {
 

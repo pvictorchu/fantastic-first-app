@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { VisualizacaoChatPage } from './visualizacaoChat.page';
+import { VisualizacaoChatPage } from './visualizacao-chat.page';
 
 describe('VisualizacaoChatPage', () => {
   let component: VisualizacaoChatPage;

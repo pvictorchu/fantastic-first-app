@@ -33,9 +33,10 @@ const routes: Routes = [
     loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
   },
   {
-    path: 'visualizacaoChat',
-    loadChildren: () => import('./visualizacaoChat/visualizacaoChat.module').then( m => m.VisualizacaoChatPageModule)
-  } 
+    path: 'visualizacao-chat',
+    loadChildren: () => import('./visualizacao-chat/visualizacao-chat.module').then( m => m.VisualizacaoChatPageModule)
+  }
+  
 ];
 @NgModule({
   imports: [
