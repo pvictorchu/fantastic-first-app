@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Photo } from 'src/app/components/photo-card/photo-card.component';
-import { PhotosService } from 'src/app/services/photos.service';
+import { PhotosService, PhotosService2 } from 'src/app/services/photos.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { filter } from 'minimatch';
 
 
 @Component({
@@ -10,12 +12,20 @@ import { PhotosService } from 'src/app/services/photos.service';
 })
 export class FeedPage implements OnInit {
 
-  public photos: Photo[]
+  public photos: Photo[] = [];
 
-  constructor(private photoService: PhotosService) { }
+  constructor(private db: AngularFirestore) { }
 
   ngOnInit() {
-    this.photos = this.photoService.allPhotos();
+
+    this.db.collection<Photo>('/feed/').snapshotChanges().subscribe(res => {
+      console.log(res);
+      res.forEach(c => {
+        this.photos.push({originalid: c.payload.doc.id, ...c.payload.doc.data()});
+      })
+      // this.photos = <Photo[]> res.filter((e : Photo) => e.user.id != 50);
+    })
+
   }
 
 }

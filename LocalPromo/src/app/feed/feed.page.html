@@ -8,12 +8,17 @@
     <ion-title class="ion-text-center">Local Promo</ion-title>
     <ion-buttons slot="end">
       <ion-button>
-        <ion-icon slot="icon-only" name="paper-plane" routerLink = "/messages"></ion-icon>
+        <ion-icon slot="icon-only" name="paper-plane" routerLink="/messages"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add" (click)="log()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <app-photo-card *ngFor="let p of photos" [photo]="p"></app-photo-card>
 </ion-content>

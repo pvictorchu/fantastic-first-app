@@ -36,7 +36,7 @@
   </ion-segment>
 
   <ion-row>
-    <ion-col [routerLink]="['view', p.id]" class="grid-cell" [size]="gridSize" *ngFor="let p of photos2">
+    <ion-col [routerLink]="['view', p.id]" class="grid-cell" [size]="gridSize" *ngFor="let p of photos">
       <img [src]="p.photo_url" alt="">
     </ion-col>
   </ion-row>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Photo } from 'src/app/components/photo-card/photo-card.component';
 import { PhotosService, PhotosService2 } from 'src/app/services/photos.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-view',
@@ -10,13 +11,29 @@ import { PhotosService, PhotosService2 } from 'src/app/services/photos.service';
 })
 export class ViewPage implements OnInit {
 
-  public photo: Photo;
+  public photo: Photo = {
+    originalid: null,
+    id: null,
+    comment_count: null,
+    comment: [{
+      autor: null,
+      id: null,
+      message: null,
+      photo_url: null,
+    }],
+    description: null,
+    liked: null,
+    place: null,
+    user: null,
+  };
 
-  constructor(private route: ActivatedRoute, private photosService: PhotosService2) { }
+  constructor(private route: ActivatedRoute, private db: AngularFirestore) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+
     const id = +this.route.snapshot.paramMap.get('id');
-    this.photo = this.photosService.findPhoto(id);
+    console.log(this.photo);
+    this.db.collection('/feed/', e => e.where("id", "==", id)).valueChanges().subscribe((e: Photo[]) => { console.log(e); this.photo = e[0] });
   }
 
 }
