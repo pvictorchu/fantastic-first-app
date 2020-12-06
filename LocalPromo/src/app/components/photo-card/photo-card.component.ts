@@ -36,7 +36,7 @@ export class PhotoCardComponent implements OnInit {
 
   ngOnInit() { }
 
-  public input : string;
+  public input: string;
 
   novoComentario(input: string) {
     const newComment: Comment = {
@@ -47,6 +47,7 @@ export class PhotoCardComponent implements OnInit {
     };
 
     this.photo.comment.push(newComment);
+    this.photo.comment_count = this.photo.comment.length;
 
     console.log(newComment);
 
@@ -57,6 +58,18 @@ export class PhotoCardComponent implements OnInit {
     //     let id = res[0].payload.doc.id;
     //   });
     // }
+  }
+
+  apagarComentario(input: Comment) {
+    const index = this.photo.comment.indexOf(input, 0);
+    if (index > 1) {
+      this.photo.comment.splice(index, 1);
+
+      this.photo.comment_count = this.photo.comment.length;
+      this.db.collection('/feed/').doc<Photo>(this.photo.originalid).update(this.photo);
+    }
+
+    console.log(input);
   }
 }
 
