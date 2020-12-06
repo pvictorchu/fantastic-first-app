@@ -5,7 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { filter } from 'minimatch';
 import { AuthenticationService } from '../compartilhado/authentication-service';
 import { Router } from '@angular/router';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+
 
 @Component({
   selector: 'app-feed',
@@ -15,15 +15,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 export class FeedPage implements OnInit {
 
   public photos: Photo[] = [];
-  imagem: any = null;
-  
-  private options: CameraOptions = {
-    quality: 50,
-    destinationType: this.camera.DestinationType.DATA_URL,
-    encodingType: this.camera.EncodingType.JPEG,
-    mediaType: this.camera.MediaType.PICTURE
-  }
-  constructor(private db: AngularFirestore, private auth: AuthenticationService, public router: Router,private camera: Camera) { }
+
+  constructor(private db: AngularFirestore, private auth: AuthenticationService, public router: Router) { }
 
   ngOnInit() {
 
@@ -41,13 +34,6 @@ export class FeedPage implements OnInit {
 
   }
 
-  baterFoto() {
-    this.camera.getPicture(this.options).then((imageData) => {
-      this.imagem = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-      alert('Ops!\nHouve um erro');
-      console.log(err)
-    });
-  }
+  
 
 }
