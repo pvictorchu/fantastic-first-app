@@ -48,6 +48,7 @@
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "cordova-android": "^9.0.0",
+    "cordova-browser": "^6.0.0",
     "cordova-ios": "^6.1.1",
     "cordova-plugin-camera": "^5.0.1",
     "cordova-plugin-device": "^2.0.2",
