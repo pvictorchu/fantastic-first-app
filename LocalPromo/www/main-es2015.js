@@ -323,6 +323,10 @@ const routes = [
     {
         path: 'visualizacao-chat',
         loadChildren: () => __webpack_require__.e(/*! import() | visualizacao-chat-visualizacao-chat-module */ "visualizacao-chat-visualizacao-chat-module").then(__webpack_require__.bind(null, /*! ./visualizacao-chat/visualizacao-chat.module */ "./src/app/visualizacao-chat/visualizacao-chat.module.ts")).then(m => m.VisualizacaoChatPageModule)
+    },
+    {
+        path: 'camera',
+        loadChildren: () => __webpack_require__.e(/*! import() | camera-camera-module */ "camera-camera-module").then(__webpack_require__.bind(null, /*! ./camera/camera.module */ "./src/app/camera/camera.module.ts")).then(m => m.CameraPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {

@@ -35,6 +35,10 @@ const routes: Routes = [
   {
     path: 'visualizacao-chat',
     loadChildren: () => import('./visualizacao-chat/visualizacao-chat.module').then( m => m.VisualizacaoChatPageModule)
+  },
+  {
+    path: 'camera',
+    loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule)
   }
   
 ];

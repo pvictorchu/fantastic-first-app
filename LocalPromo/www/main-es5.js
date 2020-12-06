@@ -256,6 +256,17 @@
             return m.VisualizacaoChatPageModule;
           });
         }
+      }, {
+        path: 'camera',
+        loadChildren: function loadChildren() {
+          return __webpack_require__.e(
+          /*! import() | camera-camera-module */
+          "camera-camera-module").then(__webpack_require__.bind(null,
+          /*! ./camera/camera.module */
+          "./src/app/camera/camera.module.ts")).then(function (m) {
+            return m.CameraPageModule;
+          });
+        }
       }];
 
       var AppRoutingModule = function AppRoutingModule() {
