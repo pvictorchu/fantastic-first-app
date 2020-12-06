@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import * as firebase  from 'firebase/app';
+import * as firebase from 'firebase/app';
 // import { User } from "/user";
 import { Router } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/auth";
@@ -11,6 +11,7 @@ export interface User {
     displayName: string;
     photoURL: string;
     emailVerified: boolean;
+  bio: string;
  }
 
 @Injectable({
@@ -44,14 +45,17 @@ export class AuthenticationService {
   }
 
   // Register user with email/password
-  RegisterUser(email, password) {
-    return this.ngFireAuth.createUserWithEmailAndPassword(email, password)
+
+  async RegisterUser(email, password) {
+    const algo = this.ngFireAuth.createUserWithEmailAndPassword(email, password).then(x => this.SetUserData(x.user))
+    return algo
   }
 
   // Email verification when new user register
   SendVerificationMail() {
     //   this.ngFireAuth.currentUser.then((e) => e.sendEmailVerification().then)
     return this.ngFireAuth.currentUser.then(e => e.sendEmailVerification()
+
     .then(() => {
       this.router.navigate(['verify-email']);
     }))
@@ -70,7 +74,7 @@ export class AuthenticationService {
   // Returns true when user is looged in
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : false;
+    return (user !== null) ? true : false;
   }
 
   // Returns true when user's email is verified
@@ -79,10 +83,12 @@ export class AuthenticationService {
     return (user.emailVerified !== false) ? true : false;
   }
 
+
 //   // Sign in with Gmail
 //   GoogleAuth() {
 //     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
 //   }
+
 
   // Auth providers
   AuthLogin(provider) {
@@ -98,17 +104,24 @@ export class AuthenticationService {
   }
 
   // Store user in localStorage
-  SetUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/${user.uid}`);
-    const userData: User = {
+  async SetUserData(user) {
+    const userRef: AngularFirestoreDocument<User> = this.afStore.doc(`users/${user.uid}`);
+
+    userRef.get(user.uid).subscribe(e => {
+
+      const userData = e.data() ??
+      {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+        displayName: '',
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified
-    }
+        emailVerified: user.emailVerified,
+        bio: ''
+      };
+
     return userRef.set(userData, {
       merge: true
+    })
     })
   }
 
@@ -120,8 +133,10 @@ export class AuthenticationService {
     })
   }
 
-  GetUserData(){
-    
+  GetCurrentUserData() {
+    // this.afStore.doc(`users/${user.uid}`);
+    console.log(this.afStore)
+    return this.afStore.collection
   }
 
 }

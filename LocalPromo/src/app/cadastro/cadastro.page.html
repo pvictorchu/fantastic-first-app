@@ -13,20 +13,20 @@
   
     <ion-item>
         <ion-label position="floating">Nome Completo</ion-label>
-        <ion-input [(ngModel)]="usuario2.nomeCompleto" name="fName"></ion-input>
+        <ion-input [(ngModel)]="user.nomeCompleto" name="fName"></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label position="floating">Email</ion-label>
-      <ion-input [(ngModel)]="usuario2.name" name="lName"></ion-input>
+      <ion-input [(ngModel)]="user.email" name="lName"></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label position="floating">Senha</ion-label>
-      <ion-input type="password" [(ngModel)]="usuario2.senha" name="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="user.senha" name="password"></ion-input>
     </ion-item>
   
-    <ion-button type="submit" expand="full" color="primary" (click)="retorno()" routerLink = "/feed" >Registrar</ion-button>
+    <ion-button type="submit" expand="full" color="primary" (click)="register()" >Registrar</ion-button>
 
 
 </ion-content>  

@@ -34,22 +34,30 @@
       {{photo?.description}}
     </ion-row>
     <ion-row *ngFor="let i of photo?.comment">
-      <ion-col>
+      <ion-col size="2">
         <ion-avatar class="feed-comment-avatar">
           <img [src]="i.photo_url" alt="">
         </ion-avatar>
       </ion-col>
-      <ion-col>
-        {{i.autor}}
+      <ion-col padding-left size="8">
+        <ion-row text-size="9px">
+          {{i.autor}}
+        </ion-row>
+        <ion-row>
+          {{i.message}}
+        </ion-row>
       </ion-col>
       <ion-col>
-        {{i.message}}
+        <button ion-button icon-only clear item-right style="background-color: transparent;">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </button>
       </ion-col>
     </ion-row>
-    <ion-item class = "comentario">
+    <ion-item class="comentario">
       <ion-label position="floating">Deixe o seu comentário</ion-label>
       <ion-input [(ngModel)]="input"></ion-input>
-      <button ion-button icon-only clear item-right slot="end" style="background-color: transparent;" (click)="novoComentario(input)">
+      <button ion-button icon-only clear item-right slot="end" style="background-color: transparent;"
+        (click)="novoComentario(input)">
         <ion-icon name="send-sharp" slot="end" class="icon"></ion-icon>
       </button>
     </ion-item>
