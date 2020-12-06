@@ -13,7 +13,8 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
   ],
   providers: [
     StatusBar,
-    Camera,
+    CameraPreview,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

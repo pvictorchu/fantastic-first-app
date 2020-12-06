@@ -234,29 +234,15 @@
       var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/router */
       "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-      /* harmony import */
-
-
-      var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! @ionic-native/camera/ngx */
-      "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
 
       var FeedPage = /*#__PURE__*/function () {
-        function FeedPage(db, auth, router, camera) {
+        function FeedPage(db, auth, router) {
           _classCallCheck(this, FeedPage);
 
           this.db = db;
           this.auth = auth;
           this.router = router;
-          this.camera = camera;
           this.photos = [];
-          this.imagem = null;
-          this.options = {
-            quality: 50,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE
-          };
         }
 
         _createClass(FeedPage, [{
@@ -275,18 +261,6 @@
               });
             }
           }
-        }, {
-          key: "baterFoto",
-          value: function baterFoto() {
-            var _this2 = this;
-
-            this.camera.getPicture(this.options).then(function (imageData) {
-              _this2.imagem = 'data:image/jpeg;base64,' + imageData;
-            }, function (err) {
-              alert('Ops!\nHouve um erro');
-              console.log(err);
-            });
-          }
         }]);
 
         return FeedPage;
@@ -299,8 +273,6 @@
           type: _compartilhado_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"]
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
-        }, {
-          type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__["Camera"]
         }];
       };
 

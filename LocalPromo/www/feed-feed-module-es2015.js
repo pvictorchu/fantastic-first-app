@@ -122,27 +122,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-firestore.js");
 /* harmony import */ var _compartilhado_authentication_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../compartilhado/authentication-service */ "./src/app/compartilhado/authentication-service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
-
 
 
 
 
 
 let FeedPage = class FeedPage {
-    constructor(db, auth, router, camera) {
+    constructor(db, auth, router) {
         this.db = db;
         this.auth = auth;
         this.router = router;
-        this.camera = camera;
         this.photos = [];
-        this.imagem = null;
-        this.options = {
-            quality: 50,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE
-        };
     }
     ngOnInit() {
         if (!this.auth.isLoggedIn)
@@ -157,20 +147,11 @@ let FeedPage = class FeedPage {
             });
         }
     }
-    baterFoto() {
-        this.camera.getPicture(this.options).then((imageData) => {
-            this.imagem = 'data:image/jpeg;base64,' + imageData;
-        }, (err) => {
-            alert('Ops!\nHouve um erro');
-            console.log(err);
-        });
-    }
 };
 FeedPage.ctorParameters = () => [
     { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] },
     { type: _compartilhado_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
-    { type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__["Camera"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
 ];
 FeedPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
