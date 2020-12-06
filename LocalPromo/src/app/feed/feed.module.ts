@@ -14,8 +14,11 @@ import { PhotoCardComponent } from '../components/photo-card/photo-card.componen
     CommonModule,
     FormsModule,
     IonicModule,
-    FeedPageRoutingModule
+    FeedPageRoutingModule,
+    
   ],
   declarations: [FeedPage, PhotoCardComponent]
+  
+
 })
 export class FeedPageModule {}
