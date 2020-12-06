@@ -1,18 +1,19 @@
 import { Injectable, NgZone } from '@angular/core';
 import * as firebase from 'firebase/app';
+
 // import { User } from "/user";
 import { Router } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 export interface User {
-    uid: string;
-    email: string;
-    displayName: string;
-    photoURL: string;
-    emailVerified: boolean;
+  uid: string;
+  email: string;
+  displayName: string;
+  photoURL: string;
+  emailVerified: boolean;
   bio: string;
- }
+}
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,8 @@ export class AuthenticationService {
   constructor(
     public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,
-    public router: Router,  
-    public ngZone: NgZone 
+    public router: Router,
+    public ngZone: NgZone
   ) {
     this.ngFireAuth.authState.subscribe(user => {
       if (user) {
@@ -56,19 +57,19 @@ export class AuthenticationService {
     //   this.ngFireAuth.currentUser.then((e) => e.sendEmailVerification().then)
     return this.ngFireAuth.currentUser.then(e => e.sendEmailVerification()
 
-    .then(() => {
-      this.router.navigate(['verify-email']);
-    }))
+      .then(() => {
+        this.router.navigate(['verify-email']);
+      }))
   }
 
   // Recover password
   PasswordRecover(passwordResetEmail) {
     return this.ngFireAuth.sendPasswordResetEmail(passwordResetEmail)
-    .then(() => {
-      window.alert('Password reset email has been sent, please check your inbox.');
-    }).catch((error) => {
-      window.alert(error)
-    })
+      .then(() => {
+        window.alert('Password reset email has been sent, please check your inbox.');
+      }).catch((error) => {
+        window.alert(error)
+      })
   }
 
   // Returns true when user is looged in
@@ -84,23 +85,23 @@ export class AuthenticationService {
   }
 
 
-//   // Sign in with Gmail
-//   GoogleAuth() {
-//     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
-//   }
+  //   // Sign in with Gmail
+  //   GoogleAuth() {
+  //     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
+  //   }
 
 
   // Auth providers
   AuthLogin(provider) {
     return this.ngFireAuth.signInWithPopup(provider)
-    .then((result) => {
-       this.ngZone.run(() => {
+      .then((result) => {
+        this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
         })
-      this.SetUserData(result.user);
-    }).catch((error) => {
-      window.alert(error)
-    })
+        this.SetUserData(result.user);
+      }).catch((error) => {
+        window.alert(error)
+      })
   }
 
   // Store user in localStorage
@@ -111,17 +112,17 @@ export class AuthenticationService {
 
       const userData = e.data() ??
       {
-      uid: user.uid,
-      email: user.email,
+        uid: user.uid,
+        email: user.email,
         displayName: '',
-      photoURL: user.photoURL,
+        photoURL: user.photoURL,
         emailVerified: user.emailVerified,
         bio: ''
       };
 
-    return userRef.set(userData, {
-      merge: true
-    })
+      return userRef.set(userData, {
+        merge: true
+      })
     })
   }
 
