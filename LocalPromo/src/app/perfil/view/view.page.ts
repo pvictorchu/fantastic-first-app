@@ -16,6 +16,7 @@ export class ViewPage implements OnInit {
     id: null,
     comment_count: null,
     comment: [{
+      uid: null,
       autor: null,
       id: null,
       message: null,
