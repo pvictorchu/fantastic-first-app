@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { User } from 'src/app/compartilhado/authentication-service';
 
 export interface Photo {
-  id: number;
+  id: any;
   originalid: string;
   liked: boolean;
   description: string;
@@ -10,6 +11,7 @@ export interface Photo {
   comment: Comment[];
   place: string;
   user: {
+    uid: string;
     id: number;
     name: string;
     photo_url: string;
@@ -18,6 +20,7 @@ export interface Photo {
 
 export interface Comment {
   autor: string;
+  uid: string;
   message: string;
   photo_url: string;
   id: number;
@@ -32,44 +35,58 @@ export class PhotoCardComponent implements OnInit {
 
   @Input() public photo: Photo;
 
+  public currentUser: User;
+
   constructor(private db: AngularFirestore) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    this.db.doc<User>(`users/${this.currentUser.uid}`).get().subscribe(e => this.currentUser = e.data());
+    console.log(this.currentUser);
+  }
 
   public input: string;
 
   novoComentario(input: string) {
-    const newComment: Comment = {
-      autor: this.photo.user.name,
-      id: 5,
-      message: input,
-      photo_url: this.photo.user.photo_url
-    };
+    if (input?.length > 1) {
 
-    this.photo.comment.push(newComment);
-    this.photo.comment_count = this.photo.comment.length;
+      const newComment: Comment = {
+        autor: this.currentUser.displayName,
+        uid: this.currentUser.uid,
+        id: 5,
+        message: input,
+        photo_url: this.currentUser.photoURL
+      };
 
-    console.log(newComment);
+      this.photo.comment.push(newComment);
+      this.photo.comment_count = this.photo.comment.length;
 
-    this.db.collection('/feed/').doc<Photo>(this.photo.originalid).update(this.photo);
-    this.input = null;
-    // this.db.collection<Photo>('/feed/', e => e.where("id", "==", this.photo.id)).snapshotChanges()
-    //   .subscribe((res) => {
-    //     let id = res[0].payload.doc.id;
-    //   });
-    // }
+      console.log(newComment);
+
+      this.db.collection('/feed/').doc<Photo>(this.photo.originalid).update(this.photo);
+      this.input = null;
+      // this.db.collection<Photo>('/feed/', e => e.where("id", "==", this.photo.id)).snapshotChanges()
+      //   .subscribe((res) => {
+      //     let id = res[0].payload.doc.id;
+      //   });
+      // }
+    }
   }
 
   apagarComentario(input: Comment) {
-    const index = this.photo.comment.indexOf(input, 0);
-    if (index > 1) {
-      this.photo.comment.splice(index, 1);
+    if (this.photo.user.uid == this.currentUser.uid || input.uid == this.currentUser.uid) {
 
-      this.photo.comment_count = this.photo.comment.length;
-      this.db.collection('/feed/').doc<Photo>(this.photo.originalid).update(this.photo);
+      const index = this.photo.comment.indexOf(input, 0);
+      console.log(index)
+      if (index > -1) {
+        this.photo.comment.splice(index, 1);
+
+        this.photo.comment_count = this.photo.comment.length;
+        this.db.collection('/feed/').doc<Photo>(this.photo.originalid).update(this.photo);
+      }
+
+      console.log(input);
     }
-
-    console.log(input);
   }
 }
 
