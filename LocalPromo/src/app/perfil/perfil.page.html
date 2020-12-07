@@ -14,17 +14,24 @@
   <ion-router-outlet id="menu-content"></ion-router-outlet>
 
   <ion-row class="ion-align-items-center">
-    <ion-col>
+    <ion-col size="3">
       <ion-avatar class="profile-pic">
         <img src="https://img.elo7.com.br/product/zoom/2415D56/logo-doceria-confeitaria-bolo.jpg" alt="">
       </ion-avatar>
     </ion-col>
-    <ion-col>
-      <h3>@SweetTreatConfeitaria</h3>
+    <ion-col size="9">
+      <ion-row>
+        <h3>@SweetTreatConfeitaria</h3>
+      </ion-row>
+      <ion-row>
+        
+      </ion-row>
     </ion-col>
   </ion-row>
 
   <p style="padding: 10px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+  <p style="padding: 10px;">Cep: {{endereco.cep}} {{endereco.logradouro}}  Bairro: {{endereco.bairro}} UF: {{endereco.uf}}</p>
+
 
   <ion-segment [(ngModel)]="gridSize">
     <ion-segment-button value="4">
