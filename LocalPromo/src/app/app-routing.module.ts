@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 
@@ -35,13 +36,19 @@ const routes: Routes = [
   {
     path: 'visualizacao-chat',
     loadChildren: () => import('./visualizacao-chat/visualizacao-chat.module').then( m => m.VisualizacaoChatPageModule)
+  },
+  {
+    path: 'criar-post',
+    loadChildren: () => import('./criar-post/criar-post.module').then( m => m.CriarPostPageModule)
   }
+
   
 ];
 @NgModule({
   imports: [
+    FormsModule,
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
-  exports: [RouterModule]
+  exports: [RouterModule, FormsModule]
 })
 export class AppRoutingModule { }

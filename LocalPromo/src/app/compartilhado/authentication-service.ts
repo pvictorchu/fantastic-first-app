@@ -21,6 +21,7 @@ export interface User {
 
 export class AuthenticationService {
   userData: any;
+  currentUser: User;
 
   constructor(
     public afStore: AngularFirestore,
@@ -110,7 +111,7 @@ export class AuthenticationService {
 
     userRef.get(user.uid).subscribe(e => {
 
-      const userData = e.data() ??
+      const userData = this.currentUser = e.data() ??
       {
         uid: user.uid,
         email: user.email,
@@ -135,9 +136,7 @@ export class AuthenticationService {
   }
 
   GetCurrentUserData() {
-    // this.afStore.doc(`users/${user.uid}`);
-    console.log(this.afStore)
-    return this.afStore.collection
+    return this.currentUser;
   }
 
 }

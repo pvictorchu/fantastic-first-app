@@ -26,11 +26,12 @@ export class FeedPage implements OnInit {
   constructor(private db: AngularFirestore, private auth: AuthenticationService, public router: Router,private camera: Camera) { }
 
   ngOnInit() {
-
+    
     if (!this.auth.isLoggedIn)
-      this.router.navigate(['home']);
+    this.router.navigate(['home']);
     else {
       this.db.collection<Photo>('/feed/').snapshotChanges().subscribe(res => {
+        this.photos = [];
         console.log(res);
         res.forEach(c => {
           this.photos.push({ originalid: c.payload.doc.id, ...c.payload.doc.data() });

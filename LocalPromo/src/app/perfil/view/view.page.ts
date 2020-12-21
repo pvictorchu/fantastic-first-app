@@ -22,6 +22,7 @@ export class ViewPage implements OnInit {
       message: null,
       photo_url: null,
     }],
+    photo_url: null,
     description: null,
     liked: null,
     place: null,

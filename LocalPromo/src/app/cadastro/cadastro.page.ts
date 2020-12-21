@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../compartilhado/authentication-service';
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-cadastro',

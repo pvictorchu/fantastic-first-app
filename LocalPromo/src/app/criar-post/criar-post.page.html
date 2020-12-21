@@ -1,0 +1,37 @@
+<ion-header translucent>
+    <ion-toolbar>
+      <ion-title>Divulge a sua promo</ion-title>
+      <ion-buttons slot="end">
+        <ion-button routerLink="/feed">Voltar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+  
+    <ion-img
+      src="https://www.oetker.com.br/Recipe/Recipes/oetker.com.br/br-pt/baking/image-thumb__40008__RecipeDetailsLightBox/bolo-de-aniversario-de-chocolate.jpg">
+    </ion-img>
+  
+    <ion-row class="ion-align-items-center">
+      <ion-col size="auto">
+        <ion-avatar class="feed-avatar">
+          <img [src]="currentUser?.photoURL" alt="">
+        </ion-avatar>
+      </ion-col>
+      <ion-col>
+        <ion-card-title>{{currentUser?.displayName}}</ion-card-title>
+        <ion-card-subtitle>São Paulo, SP</ion-card-subtitle>
+      </ion-col>
+    </ion-row>
+  
+    <ion-item lines="none" >
+      <ion-label position="floating">Nova Promo</ion-label>
+      <ion-input [(ngModel)]="newPhoto.description"  name="descricao"></ion-input>
+    </ion-item>
+  
+    <ion-button type="submit" expand="full" color="primary" (click)="EnviarNovoPost()">Enviar
+    </ion-button>
+  
+  
+  
+  </ion-content>

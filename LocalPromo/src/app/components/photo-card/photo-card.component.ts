@@ -7,15 +7,11 @@ export interface Photo {
   originalid: string;
   liked: boolean;
   description: string;
+  photo_url: string;
   comment_count: number;
   comment: Comment[];
   place: string;
-  user: {
-    uid: string;
-    id: number;
-    name: string;
-    photo_url: string;
-  };
+  user: User;
 }
 
 export interface Comment {
